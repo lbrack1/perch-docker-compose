@@ -11,4 +11,6 @@ RUN docker-php-ext-enable imagick
 COPY setup_perch.sh /usr/local/bin/
 RUN chmod 774 /usr/local/bin/setup_perch.sh
 
+COPY config.php /var/www/perch/config/
+
 RUN /usr/local/bin/setup_perch.sh
