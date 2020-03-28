@@ -21,10 +21,10 @@ services:
     volumes:
       - ./src:/var/www/
     depends_on:
-      - mysql
+      - database
 
   # MySQL Service
-  mysql:
+  database:
     image: mysql:8
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -42,9 +42,9 @@ services:
     ports:
       - 8080:80
     environment:
-      PMA_HOST: mysql
+      PMA_HOST: database
     depends_on:
-      - mysql
+      - database
 
 # Volumes
 volumes:
