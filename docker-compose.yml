@@ -9,7 +9,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./src:/var/www/php:ro
+      - ./src:/var/www/:ro
       - ./.docker/nginx/conf.d:/etc/nginx/conf.d:ro
     depends_on:
       - perch
@@ -17,9 +17,9 @@ services:
   # PHP Service
   perch:
     build: ./.docker/perch
-    working_dir: /var/www/php
+    working_dir: /var/www/
     volumes:
-      - ./src:/var/www/php
+      - ./src:/var/www/
     depends_on:
       - mysql
 
