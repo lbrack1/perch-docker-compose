@@ -15,7 +15,7 @@ services:
       - ./.docker/nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - perch
-    command: /bin/bash -c "envsubst '$$NGINX_SERVER_NAME' < /etc/nginx/conf.d/perch.template > /etc/nginx/conf.d/perch.conf && nginx -g 'daemon off;'"
+    command: /bin/bash -c "envsubst '$$NGINX_SERVER_NAME' < /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/conf.d/nginx.conf && nginx -g 'daemon off;'"
 
   # Perch CMS
   perch:
