@@ -5,17 +5,20 @@ server {
     root   /var/www/;
     index  index.php;
 
-    location ~* \.php$ {
-        fastcgi_pass   perch:9000;
-        include        fastcgi_params;
-        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param  SCRIPT_NAME     $fastcgi_script_name;
-     }
+    access_log /var/log/nginx/$NGINX_SERVER_NAME.access.log;
+    error_log /var/log/nginx/$NGINX_SERVER_NAME.error.log;
 
      # Perch Runway
      location / {
          if (!-e $request_filename){
              rewrite ^(.*)$ /perch/core/runway/start.php break;
          }
+     }
+
+    location ~* \.php$ {
+        fastcgi_pass   perch:9000;
+        include        fastcgi_params;
+        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param  SCRIPT_NAME     $fastcgi_script_name;
      }
  }
