@@ -8,13 +8,16 @@ services:
     image: nginx:1.17
     ports:
       - 80:80
+    environment:
+      - NGINX_SERVER_NAME=${LOCAL_DOMAIN}
     volumes:
       - ./src:/var/www/:ro
-      - ./.docker/nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./.docker/nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - perch
+    command: /bin/bash -c "envsubst '$$NGINX_SERVER_NAME' < /etc/nginx/conf.d/perch.template > /etc/nginx/conf.d/perch.conf && nginx -g 'daemon off;'"
 
-  # PHP Service
+  # Perch CMS
   perch:
     build: ./.docker/perch
     working_dir: /var/www/
@@ -29,9 +32,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${COMPOSE_PROJECT_NAME}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-
+      MYSQL_USER: ${PERCH_DB_USERNAME}
+      MYSQL_PASSWORD: ${PERCH_DB_PASSWORD}
     volumes:
       - ./.docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf:ro
       - mysqldata:/var/lib/mysql

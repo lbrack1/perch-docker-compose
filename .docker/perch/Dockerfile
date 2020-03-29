@@ -7,10 +7,10 @@ RUN apt-get update && apt-get install -y libmagickwand-dev --no-install-recommen
 RUN printf "\n" | pecl install imagick
 RUN docker-php-ext-enable imagick
 
-# Set up perch CMS
+# Install vim
+RUN apt-get update && apt-get install -y vim
+
 COPY setup_perch.sh /usr/local/bin/
 RUN chmod 774 /usr/local/bin/setup_perch.sh
-
-COPY config.php /var/www/perch/config/
 
 RUN /usr/local/bin/setup_perch.sh
