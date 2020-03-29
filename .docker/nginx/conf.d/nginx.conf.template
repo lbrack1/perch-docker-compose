@@ -8,12 +8,20 @@ server {
     access_log /var/log/nginx/$NGINX_SERVER_NAME.access.log;
     error_log /var/log/nginx/$NGINX_SERVER_NAME.error.log;
 
-     # Perch Runway
-     location / {
-         if (!-e $request_filename){
-             rewrite ^(.*)$ /perch/core/runway/start.php break;
-         }
-     }
+    # Match just the homepage
+    location = / {
+        try_files $uri @runway;
+    }
+
+    # Match any other request
+    location / {
+        try_files $uri $uri/ @runway;
+    }
+
+    # Perch Runway
+    location @runway {
+        rewrite ^ /perch/core/runway/start.php last;
+    }
 
     location ~* \.php$ {
         fastcgi_pass   perch:9000;
