@@ -41,7 +41,7 @@ PERCH_DB_PASSWORD=my_secure_database_password
 
 ## Installation
 
-If starting a fresh Perch project download the latest version of Perch Runway from [here](https://perchrunway.com/download) and copy it into the `src/` directory in the root of the project.
+To start a fresh Perch project download the latest version of Perch Runway from [here](https://perchrunway.com/download) and copy it into the `src/` directory in the root of the project.
 
 Open a terminal and cd into the folder which contains docker-compose.yml and run:
 
@@ -64,6 +64,16 @@ This must match the value entered for `LOCAL_DOMAIN` in the .env file.
 Now navigate to `http://example_domain.local/perch` to access Perch CMS.
 
 ## USAGE
+
+### Workflow
+
+The expected use of this module is that you create a new sub repository to check changes to the your perch directory.
+
+To see detailed example of hoe to use this in practice view this blog (TODO)
+ 
+### Import existing perch project
+
+TODO
 
 ### Starting containers
 
