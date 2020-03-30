@@ -69,11 +69,33 @@ Now navigate to `http://example_domain.local/perch` to access Perch CMS.
 
 The expected use of this module is that you create a new sub repository to check changes to the your perch directory.
 
-To see detailed example of hoe to use this in practice view this blog (TODO)
+For an example of using this workflow in practice see this blog post.
  
 ### Import existing perch project
 
-TODO
+To import an existing perch project into docker:
+
+##### 1) Copy Perch files
+
+Copy your Perch files into the `/src/`. This file is mounted into your Perch container
+
+##### 2) Export Perch database
+
+[Export](https://phoenixnap.com/kb/import-and-export-mysql-database) your existing Perch database. Copy the file to the root of the project.
+
+Add the environmental variable to `.env`.
+
+```
+PERCH_DB_FILE=name_of_db_export.sql
+```
+
+##### 3) Update perch config
+
+Ensure the database values in perch/config/config.php match the database values defined in '.env'
+
+##### 4) Fire it up
+
+Run `docker-compose up -d` to start the containers. Your database and perch files will be imported.
 
 ### Starting containers
 

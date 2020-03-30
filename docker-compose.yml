@@ -37,6 +37,7 @@ services:
     volumes:
       - ./.docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf:ro
       - mysqldata:/var/lib/mysql
+      - ./${PERCH_DB_FILE}:/docker-entrypoint-initdb.d/backup.sql
 
   # PhpMyAdmin Service
   phpmyadmin:
