@@ -8,6 +8,7 @@ With this project you can quickly run the following:
 - [phpMyAdmin](https://www.phpmyadmin.net/)
 - [MySQL](https://www.mysql.com/)
 
+
 ## Requirements
 
 Install the latest versions of Docker and Docker Compose on your machine.
@@ -19,6 +20,7 @@ Install the latest versions of Docker and Docker Compose on your machine.
 [Install Docker Compose](https://docs.docker.com/compose/install/)
 
 Clone this repository or copy the files from this repository into a new folder.
+
 
 ## Configuration
 
@@ -39,9 +41,11 @@ PERCH_DB_USERNAME=my_database_username
 PERCH_DB_PASSWORD=my_secure_database_password
 ```
 
+
 ## Installation
 
 You can either install a fresh Perch Runway project or [migrate an existing project](#import-existing-perch-project)
+
 
 ### Set up new Perch project
 
@@ -69,9 +73,11 @@ This must match the value entered for `LOCAL_DOMAIN` in the .env file.
 
 Now navigate to `http://example_domain.local/perch` to access Perch CMS.
 
+
 ### Import existing perch project
 
 To import an existing Perch project into perch-docker-compose:
+
 
 ##### 1) Copy Perch files
 
@@ -85,6 +91,7 @@ The directory structure should look like this:
 
 Again, it is important that `example_domain` is be eqaul to the `COMPOSE_PROJECT_NAME` in `.env`
 
+
 ##### 2) Export Perch database
 
 [Export](https://phoenixnap.com/kb/import-and-export-mysql-database) your existing Perch database. Copy the file to the root of the project.
@@ -95,15 +102,18 @@ Add the below environmental variable to `.env`.
 PERCH_DB_FILE=name_of_db_export.sql
 ```
 
+
 ##### 3) Update perch config
 
 Ensure the database values in perch/config/config.php match the database values defined in '.env'
+
 
 ##### 4) Fire it up
 
 Run `docker-compose up -d` to start the containers. Your database and perch files will be imported.
 
-### config.php
+
+### Perch config.php
 
 You can set up your config.php to dynamically switch between local and production environments.
 
@@ -129,15 +139,18 @@ You can set up your config.php to dynamically switch between local and productio
         }
 ```
 
+
 ## USAGE
 
 Examples of using Docker Compose to streamline your Perch workflow.
+
 
 ### Workflow
 
 The expected use of this module is that you create a new sub repository to check changes to the your perch directory.
 
 For an example of using this workflow in practice see this blog post.
+
 
 ### Starting containers
 
@@ -147,11 +160,13 @@ You can start the containers with the up command in daemon mode (by adding -d as
 docker-compose start
 ```
 
+
 ### Stopping containers
 
 ```
 docker-compose stop
 ```
+
 
 ### Removing containers
 
