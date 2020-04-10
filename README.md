@@ -65,6 +65,8 @@ Now navigate to `http://example_domain.local/perch` to access Perch CMS.
 
 ## USAGE
 
+Examples of using Docker Compose to streamline your Perch workflow.
+
 ### Workflow
 
 The expected use of this module is that you create a new sub repository to check changes to the your perch directory.
