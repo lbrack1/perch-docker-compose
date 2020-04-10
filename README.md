@@ -41,7 +41,11 @@ PERCH_DB_PASSWORD=my_secure_database_password
 
 ## Installation
 
-To start a fresh Perch project download the latest version of Perch Runway from [here](https://perchrunway.com/download) and copy it into the `src/` directory in the root of the project.
+You can either install a fresh Perch Runway project or [migrate an existing project](#import-existing-perch-project)
+
+### Set up new Perch project
+
+To start a fresh Perch project download the latest version of Perch Runway from [here](https://perchrunway.com/download) and copy it into the `src/example_domain/` directory where `COMPOSE_PROJECT_NAME` is value of `COMPOSE_PROJECT_NAME` from `.env`.
 
 Open a terminal and cd into the folder which contains docker-compose.yml and run:
 
@@ -51,7 +55,9 @@ docker-compose up -d
 
 This will build and run the docker containers.
 
-The `/src/perch` directory will be mounted into the Perch container and used to serve your website. Also, a new mysql database is created for your project. The database name will be set by the `COMPOSE_PROJECT_NAME` parameter in `.env`
+The `/src/example_domain/` directory will be mounted into the Perch container and used to serve your website. 
+
+Also, a new mysql database is created for your project. The database name will be set by the `COMPOSE_PROJECT_NAME` parameter in `.env`
 
 Finally, to access your local Perch CMS installation you need to [add a new entry into your hosts file](https://www.howtogeek.com/howto/27350/beginner-geek-how-to-edit-your-hosts-file/).
 
@@ -63,29 +69,27 @@ This must match the value entered for `LOCAL_DOMAIN` in the .env file.
 
 Now navigate to `http://example_domain.local/perch` to access Perch CMS.
 
-## USAGE
-
-Examples of using Docker Compose to streamline your Perch workflow.
-
-### Workflow
-
-The expected use of this module is that you create a new sub repository to check changes to the your perch directory.
-
-For an example of using this workflow in practice see this blog post.
- 
 ### Import existing perch project
 
-To import an existing perch project into docker:
+To import an existing Perch project into perch-docker-compose:
 
 ##### 1) Copy Perch files
 
-Copy your Perch files into the `/src/`. This file is mounted into your Perch container
+Copy or `git clone` your Perch project into the `/src/` directory. This file is mounted into your Perch container.
+
+The directory structure should look like this:
+
+```
+|-src/example_domain/perch 
+```
+
+Again, it is important that `example_domain` is be eqaul to the `COMPOSE_PROJECT_NAME` in `.env`
 
 ##### 2) Export Perch database
 
 [Export](https://phoenixnap.com/kb/import-and-export-mysql-database) your existing Perch database. Copy the file to the root of the project.
 
-Add the environmental variable to `.env`.
+Add the below environmental variable to `.env`.
 
 ```
 PERCH_DB_FILE=name_of_db_export.sql
@@ -98,6 +102,42 @@ Ensure the database values in perch/config/config.php match the database values 
 ##### 4) Fire it up
 
 Run `docker-compose up -d` to start the containers. Your database and perch files will be imported.
+
+### config.php
+
+You can set up your config.php to dynamically switch between local and production environments.
+
+```
+<?php
+    $http_host = getenv('HTTP_HOST');
+    switch($http_host)
+    {
+        case('example_domain.local') :
+            define("PERCH_DB_USERNAME", 'dev_user');
+            define("PERCH_DB_PASSWORD", 'super_secure_password');
+            define("PERCH_DB_SERVER", "database");
+            define("PERCH_DB_DATABASE", "example_domain");
+            break;
+
+        default :
+            define("PERCH_DB_USERNAME", 'prod_user');
+            define("PERCH_DB_PASSWORD", 'super_secure_password');
+            define("PERCH_DB_SERVER", "production_server.com");
+            define("PERCH_DB_DATABASE", "prod_db");
+            define("PERCH_SSL", true);
+            break;
+        }
+```
+
+## USAGE
+
+Examples of using Docker Compose to streamline your Perch workflow.
+
+### Workflow
+
+The expected use of this module is that you create a new sub repository to check changes to the your perch directory.
+
+For an example of using this workflow in practice see this blog post.
 
 ### Starting containers
 
