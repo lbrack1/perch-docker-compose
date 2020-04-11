@@ -8,6 +8,12 @@ With this project you can quickly run the following:
 - [phpMyAdmin](https://www.phpmyadmin.net/)
 - [MySQL](https://www.mysql.com/)
 
+# Table of Contents
+1. [Requirements](#requirements)
+2. [Configuration](#configuration)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [License](#license)
 
 ## Requirements
 
@@ -182,7 +188,8 @@ Use -v if you need to remove the database volume which is used to persist the da
 docker-compose down -v
 ```
 
-### License
+## License
+
 This project is free and open source
 
 
