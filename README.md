@@ -47,7 +47,7 @@ PERCH_DB_PASSWORD=my_secure_database_password
 You can either install a fresh Perch Runway project or [migrate an existing project](#import-existing-perch-project)
 
 
-### Set up new Perch project
+### Set up new Perch Runway project
 
 To start a fresh Perch project download the latest version of Perch Runway from [here](https://perchrunway.com/download) and copy it into the `src/example_domain/` directory where `COMPOSE_PROJECT_NAME` is value of `COMPOSE_PROJECT_NAME` from `.env`.
 
@@ -181,3 +181,8 @@ Use -v if you need to remove the database volume which is used to persist the da
 ```
 docker-compose down -v
 ```
+
+### License
+This project is free and open source
+
+
