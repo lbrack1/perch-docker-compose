@@ -118,6 +118,16 @@ Ensure the database values in perch/config/config.php match the database values 
 
 Run `docker-compose up -d` to start the containers. Your database and perch files will be imported.
 
+Finally, to access your local Perch CMS installation you need to [add a new entry into your hosts file](https://www.howtogeek.com/howto/27350/beginner-geek-how-to-edit-your-hosts-file/).
+
+```
+127.0.0.1 example_domain.local
+```
+
+This must match the value entered for `LOCAL_DOMAIN` in the .env file.
+
+Now navigate to `http://example_domain.local/perch` to access Perch CMS.
+
 
 ### Perch config.php
 
