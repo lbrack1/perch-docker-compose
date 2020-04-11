@@ -11,7 +11,7 @@ services:
     environment:
       - NGINX_SERVER_NAME=${LOCAL_DOMAIN}
     volumes:
-      - ./src:/var/www/:ro
+      - ./src/${COMPOSE_PROJECT_NAME}:/var/www/:ro
       - ./.docker/nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - perch
@@ -22,9 +22,11 @@ services:
     build: ./.docker/perch
     working_dir: /var/www/
     volumes:
-      - ./src:/var/www/
+      - ./src/${COMPOSE_PROJECT_NAME}:/var/www/
     depends_on:
       - database
+    environment:
+      - HTTP_HOST=leobrack.local
 
   # MySQL Service
   database:

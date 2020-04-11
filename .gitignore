@@ -2,3 +2,4 @@
 .env
 .docker/nginx/conf.d/nginx.conf
 *.sql
+.gitmodules
