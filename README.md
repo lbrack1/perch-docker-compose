@@ -163,10 +163,9 @@ Examples of using Docker Compose to streamline your Perch workflow.
 
 ### Workflow
 
-The expected use of this module is that you create a new sub repository to check changes to the your perch directory.
+Check out this blog post which gives an example of using Perch Docker Compose in practive
 
-For an example of using this workflow in practice see this blog post.
-
+https://www.leobrack.co.uk/blog/2020-04-12-how-to-use-docker-for-easy-perch-cms-development
 
 ### Starting containers
 
