@@ -26,7 +26,7 @@ services:
     depends_on:
       - database
     environment:
-      - HTTP_HOST=leobrack.local
+      - HTTP_HOST=$LOCAL_DOMAIN
 
   # MySQL Service
   database:
