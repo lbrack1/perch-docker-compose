@@ -26,11 +26,11 @@ services:
     depends_on:
       - database
     environment:
-      - HTTP_HOST=$LOCAL_DOMAIN
+      - HTTP_HOST=tyyliandabs.local
 
   # MySQL Service
   database:
-    image: mysql:8
+    image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${COMPOSE_PROJECT_NAME}
@@ -53,5 +53,4 @@ services:
 
 # Volumes
 volumes:
-
   mysqldata:
