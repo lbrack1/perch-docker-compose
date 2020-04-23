@@ -1,6 +1,7 @@
 FROM php:7.0.33-fpm
 
 RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install mysqli
 
 # Install imagick
 RUN apt-get update && apt-get install -y libmagickwand-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*
