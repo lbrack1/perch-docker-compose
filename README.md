@@ -8,6 +8,12 @@ With this project you can quickly run the following:
 - [phpMyAdmin](https://www.phpmyadmin.net/)
 - [MySQL](https://www.mysql.com/)
 
+# Table of Contents
+1. [Requirements](#requirements)
+2. [Configuration](#configuration)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [License](#license)
 
 ## Requirements
 
@@ -47,7 +53,7 @@ PERCH_DB_PASSWORD=my_secure_database_password
 You can either install a fresh Perch Runway project or [migrate an existing project](#import-existing-perch-project)
 
 
-### Set up new Perch project
+### Set up new Perch Runway project
 
 To start a fresh Perch project download the latest version of Perch Runway from [here](https://perchrunway.com/download) and copy it into the `src/example_domain/` directory where `COMPOSE_PROJECT_NAME` is value of `COMPOSE_PROJECT_NAME` from `.env`.
 
@@ -112,6 +118,16 @@ Ensure the database values in perch/config/config.php match the database values 
 
 Run `docker-compose up -d` to start the containers. Your database and perch files will be imported.
 
+Finally, to access your local Perch CMS installation you need to [add a new entry into your hosts file](https://www.howtogeek.com/howto/27350/beginner-geek-how-to-edit-your-hosts-file/).
+
+```
+127.0.0.1 example_domain.local
+```
+
+This must match the value entered for `LOCAL_DOMAIN` in the .env file.
+
+Now navigate to `http://example_domain.local/perch` to access Perch CMS.
+
 
 ### Perch config.php
 
@@ -147,10 +163,9 @@ Examples of using Docker Compose to streamline your Perch workflow.
 
 ### Workflow
 
-The expected use of this module is that you create a new sub repository to check changes to the your perch directory.
+Check out this blog post which gives an example of using Perch Docker Compose in practive
 
-For an example of using this workflow in practice see this blog post.
-
+https://www.leobrack.co.uk/blog/2020-04-12-how-to-use-docker-for-easy-perch-cms-development
 
 ### Starting containers
 
@@ -181,3 +196,9 @@ Use -v if you need to remove the database volume which is used to persist the da
 ```
 docker-compose down -v
 ```
+
+## License
+
+This project is free and open source
+
+
