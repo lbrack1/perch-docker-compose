@@ -30,14 +30,14 @@ services:
 
   # MySQL Service
   database:
-    image: mysql:8
+    image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${COMPOSE_PROJECT_NAME}
       MYSQL_USER: ${PERCH_DB_USERNAME}
       MYSQL_PASSWORD: ${PERCH_DB_PASSWORD}
     volumes:
-      - ./.docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf:ro
+      - ./.docker/database/my.cnf:/etc/mysql/conf.d/my.cnf:ro
       - mysqldata:/var/lib/mysql
       - ./${PERCH_DB_FILE}:/docker-entrypoint-initdb.d/backup.sql
 
