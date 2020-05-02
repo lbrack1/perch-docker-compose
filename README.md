@@ -25,7 +25,7 @@ Install the latest versions of Docker and Docker Compose on your machine.
 
 [Install Docker Compose](https://docs.docker.com/compose/install/)
 
-Clone this repository or copy the files from this repository into a new folder.
+Clone this repository using the leatest release or copy the files from this repository into a new folder.
 
 
 ## Configuration
