@@ -95,7 +95,7 @@ The directory structure should look like this:
 |-src/example_domain/perch 
 ```
 
-Again, it is important that `example_domain` is be eqaul to the `COMPOSE_PROJECT_NAME` in `.env`
+Again, it is important that `example_domain` is equal to the `COMPOSE_PROJECT_NAME` in `.env`
 
 
 ##### 2) Export Perch database
@@ -163,7 +163,7 @@ Examples of using Docker Compose to streamline your Perch workflow.
 
 ### Workflow
 
-Check out this blog post which gives an example of using Perch Docker Compose in practive
+Check out this blog post which gives an example of using Perch Docker Compose in practice
 
 https://www.leobrack.co.uk/blog/2020-04-12-how-to-use-docker-for-easy-perch-cms-development
 
